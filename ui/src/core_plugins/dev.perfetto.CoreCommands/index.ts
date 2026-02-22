@@ -515,6 +515,14 @@ export default class CoreCommands implements PerfettoPlugin {
     });
 
     ctx.commands.registerCommand({
+      id: 'dev.perfetto.SetTimestampFormatMilliseconds',
+      name: 'Set timestamp format to milliseconds',
+      callback: async () => {
+        ctx.timeline.timestampFormat = TimestampFormat.Milliseconds;
+      },
+    });
+
+    ctx.commands.registerCommand({
       id: 'dev.perfetto.SetDurationPrecision',
       name: 'Set duration precision',
       callback: async () => {

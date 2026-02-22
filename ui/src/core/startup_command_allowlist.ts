@@ -43,6 +43,7 @@ export const STARTUP_COMMAND_ALLOWLIST: string[] = [
   'dev.perfetto.AddNoteAtTimestamp',
 
   // UI commands
+  'dev.perfetto.SetTimestampFormatMilliseconds',
   'dev.perfetto.ToggleLeftSidebar',
 
   // Commands will be added here based on user suggestions
