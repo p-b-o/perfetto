@@ -414,7 +414,11 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
     ctx.commands.registerCommand({
       id: 'dev.perfetto.AddNoteAtTimestamp',
       name: 'Add note at nanosecond timestamp',
-      callback: async (timestampArg: unknown, noteTextArg: unknown) => {
+      callback: async (
+        timestampArg: unknown,
+        noteTextArg: unknown,
+        noteColorArg: unknown,
+      ) => {
         const timestampStr =
           typeof timestampArg === 'string'
             ? timestampArg
@@ -434,9 +438,16 @@ export default class TrackUtilsPlugin implements PerfettoPlugin {
         }
         const traceTime = Time.fromRaw(BigInt(timestamp));
 
+        const noteColor =
+          typeof noteColorArg === 'string'
+            ? noteColorArg
+            : await ctx.omnibox.prompt('Enter note color...');
+        if (noteColor === undefined) return;
+
         ctx.notes.addNote({
           timestamp: traceTime,
           text: noteText,
+          color: noteColor,
         });
       },
     });
