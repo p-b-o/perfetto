@@ -145,7 +145,9 @@ export class KeyboardNavigationHandler implements Disposable {
   }
 
   private onZoomAnimationStep(msSinceStartOfAnimation: number) {
-    if (this.mousePositionX === null) return;
+    if (this.mousePositionX === null) {
+      this.mousePositionX = this.element.clientWidth / 2;
+    }
     const step = (this.targetZoomRatio - this.zoomRatio) * SNAP_FACTOR;
     if (this.zooming !== Zoom.None) {
       const velocity = 1 + msSinceStartOfAnimation * ACCELERATION_PER_MS;
