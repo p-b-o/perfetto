@@ -217,6 +217,12 @@ export interface ThreadSliceDetailsPanelAttrs {
   rightSections?: TrackEventDetailsPanelSection[];
 }
 
+declare global {
+  interface Window {
+    view_source(url: String): void;
+  }
+}
+
 export class ThreadSliceDetailsPanel implements TrackEventDetailsPanel {
   private sliceDetails?: SliceDetails;
   private breakdownByThreadState?: BreakdownByThreadState;
@@ -235,6 +241,23 @@ export class ThreadSliceDetailsPanel implements TrackEventDetailsPanel {
     const {trace} = this;
     const {eventId} = selection;
     const details = await getSliceDetails(trace.engine, eventId);
+
+    if (details !== undefined) {
+      if (hasArgs(details.args)) {
+        Object.entries(details.args).forEach(([key, value]) => {
+          if (key !== 'args' || value === null) {
+            return;
+          }
+          Object.entries(value).forEach(([key, value]) => {
+            if (key !== 'srcline') {
+              return;
+            }
+            const srcUrl = value;
+            parent.view_source(srcUrl);
+          });
+        });
+      }
+    }
 
     if (
       details !== undefined &&
