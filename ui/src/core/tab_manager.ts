@@ -64,10 +64,13 @@ export class TabManagerImpl implements TabManager, Disposable {
   }
 
   showCurrentSelectionTab(): void {
-    this.showTab('current_selection');
+    // this.showTab('current_selection');
   }
 
   showTab(uri: string): void {
+    if (uri == 'current_selection') {
+      return;
+    }
     // Add tab, unless we're talking about the special current_selection tab
     if (uri !== 'current_selection') {
       // Add tab to tab list if not already
