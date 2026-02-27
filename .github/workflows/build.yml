@@ -1,0 +1,16 @@
+on: [push, workflow_dispatch]
+
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - run: ./build.sh
+      - run: mv out/ui/ui/dist perfetto
+      - run: tar czvf perfetto.tar.gz perfetto
+      - run: gh release upload --clobber qemu-linux-stack perfetto.tar.gz 
