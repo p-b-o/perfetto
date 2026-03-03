@@ -228,7 +228,7 @@ export class Omnibox implements m.ClassComponent<OmniboxAttrs> {
   private renderSearchOmnibox(trace: TraceImpl | undefined): m.Children {
     return m(OmniboxWidget, {
       value: AppImpl.instance.omnibox.text,
-      placeholder: "Search or type '>' for commands or ':' for SQL mode",
+      placeholder: "Zoom and scroll with W,A,S,D keys",
       inputRef: OMNIBOX_INPUT_REF,
       onInput: (value, _prev) => {
         if (value === '>') {
