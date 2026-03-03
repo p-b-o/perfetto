@@ -20,6 +20,7 @@
   flex-direction: column;
 
   &__main {
+    height: 0px;
     flex: 1; // Fill the remaining space
     overflow: auto;
 
@@ -30,6 +31,7 @@
   }
 
   &__handle {
+    height: 0px;
     gap: 2px;
     background-color: var(--pf-color-background-secondary);
     border-top: 1px solid var(--pf-color-border);
@@ -42,6 +44,7 @@
   }
 
   &__tabs {
+    height: 0px;
     padding-inline: 3px; // Leave some space for the drop shadow
     display: flex;
     overflow: hidden;
@@ -54,12 +57,14 @@
   }
 
   &__spacer {
+    height: 0px;
     flex: 1;
     align-self: stretch;
     min-width: 30px; // Leave some room for the user to grab the handle even if there are many tabs
   }
 
   &__tab {
+    height: 0px;
     display: flex;
     align-items: baseline;
     gap: 2px;
@@ -98,12 +103,14 @@
   }
 
   &__tab-title {
+    height: 0px;
     margin: 0px 4px;
     overflow: hidden;
     user-select: none;
   }
 
   &__drawer {
+    height: 0px;
     flex-shrink: 0;
     overflow: auto;
     box-shadow: var(--pf-color-box-shadow) 0px 0px 3px;
