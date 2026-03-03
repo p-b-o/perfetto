@@ -82,7 +82,6 @@ export const defaultPlugins = [
   'dev.perfetto.SqlModules',
   'dev.perfetto.StandardGroups',
   'dev.perfetto.Thread',
-  'dev.perfetto.TimelineSync',
   'dev.perfetto.TraceInfoPage',
   'dev.perfetto.TraceMetadata',
   'dev.perfetto.TraceProcessorTrack',
