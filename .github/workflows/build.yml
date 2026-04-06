@@ -13,4 +13,4 @@ jobs:
       - run: ./build.sh
       - run: mv out/ui/ui/dist perfetto
       - run: tar czvf perfetto.tar.gz perfetto
-      - run: gh release upload --clobber qemu-linux-stack perfetto.tar.gz 
+      - run: gh release upload --clobber qemu-linux-stack-v2 perfetto.tar.gz
