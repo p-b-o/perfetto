@@ -219,7 +219,7 @@ export interface ThreadSliceDetailsPanelAttrs {
 
 declare global {
   interface Window {
-    view_source(url: String): void;
+    view_source(url: String, ts: Number): void;
   }
 }
 
@@ -253,7 +253,7 @@ export class ThreadSliceDetailsPanel implements TrackEventDetailsPanel {
               return;
             }
             const srcUrl = value;
-            parent.view_source(srcUrl);
+            parent.view_source(srcUrl, Number(selection.ts));
           });
         });
       }
